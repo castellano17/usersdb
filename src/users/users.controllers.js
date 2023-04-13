@@ -2,6 +2,17 @@ const Users = require('../models/users.models')
 const uuid = require('uuid')
 const {hashPassword} = require('../utils/crypto')
 
+
+const findUserByEmail = async (email) =>{
+  const data = await Users.findOne({
+    where: {
+      email: email
+    }
+  })
+  return data
+}
+
+
 const createNewUser = async(userObj)=>{
   const newUser = {
     id: uuid.v4(),
@@ -63,5 +74,6 @@ module.exports={
   findAllUsers,
   findUserById,
   updateUser,
-  deleteUser
+  deleteUser,
+  findUserByEmail
 }

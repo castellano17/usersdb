@@ -3,6 +3,8 @@ const cors = require('cors')
 require('dotenv').config()
 
 const userRouter = require('./users/users.router')
+const authRouter = require('./auth/auth.router')
+
 const db = require('./utils/database')
 
 const app =express()
@@ -27,6 +29,7 @@ app.get('/', (req, res)=>{
 
 
 app.use('/api/v1/users', userRouter)
+app.use('/api/v1/auth', authRouter)
 
 app.listen(PORT, ()=>{
     console.log(`Server started at port ${PORT}`);
