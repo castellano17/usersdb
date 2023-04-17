@@ -23,8 +23,21 @@ app.use(express.json())
 app.use(cors())
 
 
+const loggerMiddleware = (req, res, next)=>{
+    console.log(`${req.method} | ${req.path}`)
+    if(req.method !== 'DELETE'){
+        next()
+        return
+    }
+    res.status(400).json({message: 'Ey no hagas delete! >:C'})
+}
+
+app.use(loggerMiddleware)
+
+
 app.get('/', (req, res)=>{
-    res.status(200).json({message: 'Server ok!'})
+    res.status(200).json({message: 'Server ok!', myMessage: req.saludo})
+    
 })
 
 

@@ -29,7 +29,7 @@ const getUserById = (req, res) => {
           return res
             .status(404)
             .json({ message: `User with id: ${id}, not found` });
-        }
+        } 
         res.status(200).json(data);
       })
       .catch((err) => {

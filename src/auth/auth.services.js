@@ -15,7 +15,7 @@ const postLogin = (req, res)=>{
 
         }, 'Ac4d3ml0vers') // TODO: debería ser una variable de entorno 
 
-       res.status(200).json(data)
+       res.status(200).json({token})
     })
     .catch(err => res.status(400).json(err))
 
