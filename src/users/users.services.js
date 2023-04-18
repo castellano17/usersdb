@@ -69,11 +69,16 @@ const getUserById = (req, res) => {
       });
   };
 
+  const getMyUser = (req, res ) => {
+      const user = req.user
+      res.status(200).json(user)
+  }
 
 module.exports = {
  getAllUsers,
  postNewUsers,
  getUserById,
+ getMyUser,
  patchUser,
  deleteUser
 }
